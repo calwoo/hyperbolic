@@ -1,1 +1,6 @@
 hyperbolic-env/
+poincare-embeddings/
+
+# config folders
+.vscode/
+.DS_Store
