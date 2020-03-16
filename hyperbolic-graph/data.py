@@ -1,12 +1,13 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from tqdm import tqdm
 
 
 def parse_zachary(filename):
     with open("data/" + filename, "r") as f:
         edges = []
         for line in f:
-            edge = list(map(int, line.split())[:2])
+            edge = list(map(int, line.split()))[:2]
             edges.append(edge)
 
     # add on reversed edges
@@ -30,14 +31,14 @@ def generate_random_walks(edge_dict, walk_length=5):
     n_vertices = len(edge_dict.keys())
     walks = []
     print("generating walks...")
-    for v in range(1, n_vertices + 1):
+    for v in tqdm(range(1, n_vertices + 1)):
         walk = [v]
         for _ in range(walk_length):
             last_v = walk[-1]
             next_v = np.random.choice(edge_dict[last_v])
             walk.append(next_v)
         walks.append(walk)
-    
+
     return np.array(walks)
 
 

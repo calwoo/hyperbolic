@@ -4,3 +4,4 @@ poincare-embeddings/
 # config folders
 .vscode/
 .DS_Store
+__pycache__/
